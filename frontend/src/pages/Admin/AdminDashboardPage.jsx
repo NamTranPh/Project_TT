@@ -1,7 +1,7 @@
 import Sidebar from '../../components/Admin/Sidebar'
 import { Outlet } from 'react-router-dom'
 
-const AdminPage = () => {
+const AdminDashboardPage = () => {
   return (
     <div>
       <Sidebar />
@@ -12,4 +12,4 @@ const AdminPage = () => {
   )
 }
 
-export default AdminPage
+export default AdminDashboardPage
