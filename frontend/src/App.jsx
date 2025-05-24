@@ -1,22 +1,23 @@
 import { createBrowserRouter,
   createRoutesFromElements,
-  Outlet,
   Route,
-  RouterProvider
+  RouterProvider,
+  Routes
 } from 'react-router-dom'
-import HomePage from './pages/Users/HomePage'
-import AdminDashboardPage from './pages/Admin/AdminDashboardPage'
+import AdminLayout from './pages/Admin/AdminLayout'
+import UserLayout from './pages/Users/UserLayout'
+import Dashboard from './pages/Admin/Dashboard/Dashboard'
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path='/'>
-          <Route index={true} path='' element={<HomePage />} />
+        {/* Đường dẫn cho UserLayout */}
+        <Route path="/" element={<UserLayout />} />
 
-          <Route path='/admin' element={<AdminDashboardPage />}>
-            {/* Thêm định tuyến của Admin tại đây */}
-          </Route>
+        {/* Đường dẫn cho AdminLayout */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
         </Route>
       </>
     )
