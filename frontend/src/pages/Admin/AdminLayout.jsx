@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import Sidebar from '~/components/Admin/Sidebar/Sidebar'
 import Navbar from '~/components/Admin/Navbar/Navbar'
-import AppBar from '~/components/Admin/AppBar/AppBar'
 import { Outlet } from 'react-router-dom'
 
-const AdminLayout = ({ children }) => {
+const AdminLayout = () => {
+  const [isSidebarOpen, setIsSideBarOpen] = useState(true);
+
+  const toggleSidebbar = () => {
+    setIsSideBarOpen(!isSidebarOpen);
+  }
+
   return (
     <div className='h-screen w-full flex flex-row'>
-      <Sidebar />
-      <div className="ml-[200px] w-full">
-        <Navbar />
+      <Sidebar isOpen = {isSidebarOpen}/>
+      <div className={`${isSidebarOpen ? 'ml-[250px]' : 'ml-0'} w-full transition-all duration-600`}>
+        <Navbar onToggleSidebar = {toggleSidebbar} />
         {/* <AppBar /> */}
         <main>
           <Outlet />

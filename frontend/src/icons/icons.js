@@ -15,7 +15,10 @@ import {
   faRightFromBracket,
   faBars,
   faBagShopping,
-  faTicket
+  faTicket,
+  faAngleUp,
+  faAngleDown
+
 } from "@fortawesome/free-solid-svg-icons";
 // import { faFacebook, faGithub } from "@fortawesome/free-brands-svg-icons";
 
@@ -35,5 +38,7 @@ export {
   faRightFromBracket,
   faBars,
   faBagShopping,
-  faTicket
+  faTicket,
+  faAngleUp,
+  faAngleDown
 };

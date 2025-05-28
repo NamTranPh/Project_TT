@@ -1,20 +1,31 @@
-import { useLocation } from 'react-router-dom';
 import MenuItem from './MenuItems/MenuItem';
-import Collapses from './Collapses/Collapses';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faGaugeHigh, faClipboard, faCartShopping, faAddressCard, faTicket } from "../../../icons/icons";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen }) => {
 
   const menuItems = [
-    { id: 1, title: 'Dashboard', icon: faGaugeHigh, link: '/admin/dashboard'},
-    { id: 2, title: 'Sản phẩm', icon: faClipboard, link: '/admin/all-product'},
-    { id: 3, title: 'Đơn hàng', icon: faCartShopping, link: '/admin/order-list'},
-    { id: 4, title: 'Nhân viên', icon: faAddressCard, link: '/admin/staff'},
-    { id: 5, title: 'Mã khuyến mại', icon: faTicket, link: '/admin/voucher'}
+    { id: 1, title: 'Dashboard', icon: faGaugeHigh, link: '/admin/dashboard' },
+    {
+      id: 2, title: 'Sản phẩm', icon: faClipboard,children: [
+        { title: 'Danh sách sản phẩm', link: '/admin/all-product' },
+        { title: 'Thêm sản phẩm', link: '/admin/create-product' },
+        { title: 'Các sản phẩm đã xóa', link: '/admin/list-product-trash' },
+        { title: 'Danh mục sản phẩm', link: '/admin/category' },
+
+      ]
+    },
+    { id: 3, title: 'Đơn hàng', icon: faCartShopping, link: '/admin/order-list' },
+    {
+      id: 4, title: 'Nhân viên', icon: faAddressCard, children: [
+        { title: 'Danh sách nhân viên', link: '/admin/all-staff' },
+        { title: 'Thêm nhân viên', link: '/admin/add-staff' },
+      ]
+    },
+    { id: 5, title: 'Mã khuyến mại', icon: faTicket, link: '/admin/voucher' }
   ]
   return (
-    <div className='w-[200px] fixed h-screen px-2 py-3 z-10 shadow-2xl bg-white transition-all duration-300'>
+    <div className={`${isOpen ? 'w-[250px] translate-x-0' : '-translate-x-full absolute left-0'} overflow-hidden fixed h-screen px-2 py-3 z-10 shadow-2xl bg-white transition-all duration-600`}>
       {/* Logo */}
       <div className="px-3 font-semibold text-[30px]">
         <h5 className="text-[#003F62] text-center">
@@ -29,8 +40,6 @@ const Sidebar = () => {
           ))
         }
       </nav>
-      {/* Collapses Categories*/}
-      <Collapses />
     </div>
   )
 }
