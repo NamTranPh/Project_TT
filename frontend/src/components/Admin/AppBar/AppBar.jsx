@@ -3,7 +3,7 @@ import React from 'react'
 const AppBar = () => {
   return (
     <div>
-      AppBar Admin Page
+        <h5 className="text-xl font-bold text-gray-800 mb-6">Home</h5>
     </div>
   )
 }

@@ -10,3 +10,6 @@ npm install recharts
 
 # Tải fontawesome
 npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
+
+# Tai Datatable
+npm install react-data-table-component

@@ -8,18 +8,18 @@ const Sidebar = ({ isOpen }) => {
     { id: 1, title: 'Dashboard', icon: faGaugeHigh, link: '/admin/dashboard' },
     {
       id: 2, title: 'Sản phẩm', icon: faClipboard,children: [
-        { title: 'Danh sách sản phẩm', link: '/admin/all-product' },
-        { title: 'Thêm sản phẩm', link: '/admin/create-product' },
-        { title: 'Các sản phẩm đã xóa', link: '/admin/list-product-trash' },
-        { title: 'Danh mục sản phẩm', link: '/admin/category' },
+        { title: 'Danh sách sản phẩm', link: '/admin/products/' },
+        { title: 'Thêm sản phẩm', link: '/admin/products/create' },
+        { title: 'Các sản phẩm đã xóa', link: '/admin/products/trashs' },
+        { title: 'Danh mục sản phẩm', link: '/admin/products/category' },
 
       ]
     },
-    { id: 3, title: 'Đơn hàng', icon: faCartShopping, link: '/admin/order-list' },
+    { id: 3, title: 'Đơn hàng', icon: faCartShopping, link: '/admin/order' },
     {
       id: 4, title: 'Nhân viên', icon: faAddressCard, children: [
-        { title: 'Danh sách nhân viên', link: '/admin/all-staff' },
-        { title: 'Thêm nhân viên', link: '/admin/add-staff' },
+        { title: 'Danh sách nhân viên', link: '/admin/staff/all-staff' },
+        { title: 'Thêm nhân viên', link: '/admin/staff/create' },
       ]
     },
     { id: 5, title: 'Mã khuyến mại', icon: faTicket, link: '/admin/voucher' }

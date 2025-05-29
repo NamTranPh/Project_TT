@@ -8,10 +8,13 @@ import {
 import AdminLayout from './pages/Admin/AdminLayout';
 import UserLayout from './pages/Users/UserLayout'
 import Dashboard from './pages/Admin/dashboard/dashboard'
-import Product from './pages/Admin/products/products'
-import CreateProduct from './pages/Admin/products/create-product'
-import Voucher from './pages/Admin/vouchers/voucher'
-import CreateVoucher from './pages/Admin/vouchers/create_voucher'
+import Product from './pages/Admin/products'
+import CreateProduct from './pages/Admin/products/create'
+import TrashProduct from './pages/Admin/products/trash'
+import Order from './pages/Admin/oders/'
+import Voucher from './pages/Admin/vouchers/'
+import CreateVoucher from './pages/Admin/vouchers/create'
+import EditVoucher from './pages/Admin/vouchers/edit'
 
 function App() {
   const router = createBrowserRouter(
@@ -24,12 +27,21 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="all-product" element={<Product />} />
-          <Route path="create-product" element={<CreateProduct />} />
+
+          <Route path="products">
+            <Route path="" element={<Product />} />
+            <Route path="create" element={<CreateProduct />} />
+            <Route path="trashs" element={<TrashProduct />} />
+          </Route>
+
+          <Route path="order">
+            <Route index element={<Order />} />
+          </Route>
+
           <Route path="voucher">
             <Route index element={<Voucher />} />
-            <Route path="create_voucher" element={<CreateVoucher />} />
-            <Route path="edit_voucher" element={<CreateVoucher />} />
+            <Route path="create" element={<CreateVoucher />} />
+            <Route path="edit" element={<EditVoucher />} />
             <Route path="delete_voucher" element={<CreateVoucher />} />
           </Route>
         </Route>

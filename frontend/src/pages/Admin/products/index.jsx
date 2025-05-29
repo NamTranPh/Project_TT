@@ -5,7 +5,7 @@ const Product = () => {
         <div className="p-4">
             <h1>Trang sản phẩm</h1>
 
-            <Link to="/admin/create-product" >
+            <Link to="/admin/product/create" >
                 Thêm sản phẩm
             </Link>
         </div>

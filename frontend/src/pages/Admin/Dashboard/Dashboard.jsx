@@ -145,8 +145,9 @@ const Dashboard = () => {
 
       {/* Line Chart - BestSellers */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {/* Chart */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">BestSellers</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Doanh thu</h2>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={userGrowthData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -157,14 +158,42 @@ const Dashboard = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
+
+        {/* Best */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          Sản phẩm bán chạy nhất
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-lg font-semibold text-gray-800 mb-4">Top 5 Sản Phẩm bán chạy nhất</h2>
+            <button className="text-gray-500 hover:text-gray-700 text-xl cursor-pointer">⋮</button>
+          </div>
+
+          <hr className="mb-3" />
+
+          <div className="space-y-4">
+            {[1, 2, 3].map((item, index) => (
+              <div key={index} className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-gray-300 rounded-md"></div>
+
+                <div className="flex-1">
+                  <div className="font-medium text-sm">Lorem Ipsum</div>
+                  <div className="text-gray-400 text-xs">₹126.500</div>
+                </div>
+
+                <div className="text-right">
+                  <div className="font-bold text-sm">₹126.50</div>
+                  <div className="text-gray-400 text-xs">999 sales</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6">
+            <button className="bg-[#003049] text-white text-sm font-semibold px-4 py-2 rounded hover:bg-[#002437] transition">
+              REPORT
+            </button>
+          </div>
         </div>
+
       </div>
-
-
-
-
 
       {/* Recent Orders */}
       <div className="bg-white rounded-lg shadow p-6">

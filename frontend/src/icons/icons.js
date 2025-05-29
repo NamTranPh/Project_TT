@@ -1,7 +1,7 @@
 // src/icons/icons.js
 import {
   faUser,
-  faAdd,
+  faCirclePlus,
   faTrash,
   faEdit,
   faHome,
@@ -24,7 +24,7 @@ import {
 
 export {
   faUser,
-  faAdd,
+  faCirclePlus,
   faEdit,
   faTrash,
   faHome,
