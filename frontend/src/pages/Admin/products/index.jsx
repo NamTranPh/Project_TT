@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ProductsTable from './ProductsTable/ProductsTable'
+import ProductsTable from './table/ProductsTable'
 const Product = () => {
   return (
     <div className="p-4">
