@@ -9,12 +9,13 @@ import AdminLayout from './pages/Admin/AdminLayout';
 import UserLayout from './pages/Users/UserLayout'
 import Dashboard from './pages/Admin/dashboard/dashboard'
 import Product from './pages/Admin/products'
-import CreateProduct from './pages/Admin/products/create'
+import ProductCreate from './pages/Admin/products/ProductCRUD/ProductCreate'
 import TrashProduct from './pages/Admin/products/trash'
 import Order from './pages/Admin/oders/'
 import Voucher from './pages/Admin/vouchers/'
 import CreateVoucher from './pages/Admin/vouchers/create'
 import EditVoucher from './pages/Admin/vouchers/edit'
+import ProductEdit from './pages/Admin/products/ProductCRUD/ProductEdit';
 
 function App() {
   const router = createBrowserRouter(
@@ -30,8 +31,9 @@ function App() {
 
           <Route path="products">
             <Route path="" element={<Product />} />
-            <Route path="create" element={<CreateProduct />} />
+            <Route path="create" element={<ProductCreate />} />
             <Route path="trashs" element={<TrashProduct />} />
+            <Route path="edit/:id" element={<ProductEdit />} />
           </Route>
 
           <Route path="order">

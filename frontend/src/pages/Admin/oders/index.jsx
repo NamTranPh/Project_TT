@@ -6,7 +6,6 @@ const Oder = () => {
       </div>
 
       <div className="page-body px-5 py-5 bg-white rounded shadow">
-    
       </div>
 
     </div>

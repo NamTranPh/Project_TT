@@ -195,7 +195,7 @@ const Dashboard = () => {
 
       </div>
 
-      {/* Recent Orders */}
+      {/* Recent Ox`rders */}
       <div className="bg-white rounded-lg shadow p-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Đơn hàng gần đây</h2>
         <div className="overflow-x-auto">
