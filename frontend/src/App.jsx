@@ -10,12 +10,15 @@ import UserLayout from './pages/Users/UserLayout'
 import Dashboard from './pages/Admin/dashboard/dashboard'
 import Product from './pages/Admin/products'
 import ProductCreate from './pages/Admin/products/create/ProductCreate'
+import ProductEdit from './pages/Admin/products/edit/ProductEdit';
 import TrashProduct from './pages/Admin/products/trash'
-import Order from './pages/Admin/oders/'
+
+import OrderList from './pages/Admin/oders/'
+import OrderDetail from './pages/Admin/oders/detail'
+
 import Voucher from './pages/Admin/vouchers/'
 import CreateVoucher from './pages/Admin/vouchers/create'
 import EditVoucher from './pages/Admin/vouchers/edit'
-import ProductEdit from './pages/Admin/products/edit/ProductEdit';
 
 function App() {
   const router = createBrowserRouter(
@@ -37,7 +40,8 @@ function App() {
           </Route>
 
           <Route path="order">
-            <Route index element={<Order />} />
+            <Route index element={<OrderList />} />
+            <Route path=":id" element={<OrderDetail />} />
           </Route>
 
           <Route path="voucher">
