@@ -1,5 +1,5 @@
 import Form from '../vouchers/form'
-const CreateVoucher = () => {
+const VoucherCreate = () => {
   return (
     <div className="p-6">
       <div className="page-header">
@@ -15,4 +15,4 @@ const CreateVoucher = () => {
   )
 }
 
-export default CreateVoucher
+export default VoucherCreate

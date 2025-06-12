@@ -13,7 +13,7 @@ const Voucher = () => {
           <Link to="/admin/voucher/create"
             className="flex items-center text-xs gap-1 px-2 py-2 border border-[#206bc4] text-[#206bc4] rounded bg-transparent hover:bg-[#206bc4] hover:text-white hover:border-0 transition"
           >
-            <FontAwesomeIcon icon={faCirclePlus} /> Thêm Voucher Mới
+            <FontAwesomeIcon icon={faCirclePlus} /> Thêm Voucher mới
           </Link>
         </div>
       </div>
@@ -21,7 +21,7 @@ const Voucher = () => {
       <div className="page-body px-5 py-5 bg-white rounded shadow">
         <div className="search-box flex justify-end pb-5">
           <form id="formSearch">
-            <div class="flex">
+            <div className="flex">
               <input
                 id="search"
                 type="text"

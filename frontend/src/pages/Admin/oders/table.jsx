@@ -29,19 +29,19 @@ const Table = () => {
             note: '',
             products: [
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 980.40,
                 },
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 800.40,
                 },
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 880.40,
@@ -49,7 +49,7 @@ const Table = () => {
             ],
         },
         {
-            id: '#1234',
+            id: '#1334',
             customer: {
                 avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
                 name: 'Evan',
@@ -72,26 +72,26 @@ const Table = () => {
             note: '',
             products: [
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 980.40,
                 },
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 800.40,
                 },
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 880.40,
                 },
             ],
         },
-           {
+        {
             id: '#1233',
             customer: {
                 avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
@@ -115,27 +115,27 @@ const Table = () => {
             note: '',
             products: [
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 980.40,
                 },
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 800.40,
                 },
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 880.40,
                 },
             ],
         },
-               {
-            id: '#1233',
+        {
+            id: '#1231',
             customer: {
                 avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
                 name: 'John Doe',
@@ -158,19 +158,19 @@ const Table = () => {
             note: '',
             products: [
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 980.40,
                 },
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 800.40,
                 },
                 {
-                    name: 'Lorem Ipsum',
+                    name: 'Iphone 13',
                     orderId: '#5241',
                     quantity: 2,
                     price: 880.40,
@@ -181,10 +181,10 @@ const Table = () => {
 
     const columns = [
         {
-            name: 'Mã ĐH',
+            name: 'ID',
             selector: (row) => row.id,
             sorttable: true,
-            maxWidth: '60px',
+            grow: 0.5,
             cell: row => <span className='font-medium text-blue-600'>{row.id}</span>
         },
         {
@@ -208,13 +208,13 @@ const Table = () => {
         {
             name: 'Ngày tạo',
             selector: (row) => row.date,
-            center: true,
+            // center: true,
             sortable: true,
         },
         {
             name: 'Tổng tiền',
             selector: (row) => row.amount,
-            center: true,
+            // center: true,
             sortable: true,
         },
         {
@@ -267,8 +267,6 @@ const Table = () => {
                 textTransform: 'uppercase',
                 fontWeight: 500,
                 fontSize: '12px',
-                paddingLeft: '1.5rem',
-                paddingRight: '1.5rem',
                 paddingTop: '0.75rem',
                 paddingBottom: '0.75rem',
                 color: '#6b7280',

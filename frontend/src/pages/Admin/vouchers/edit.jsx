@@ -1,6 +1,6 @@
 import Form from '../vouchers/form'
 
-const EditVoucher = () => {
+const VoucherEdit = () => {
   return (
     <div className="p-6">
     
@@ -18,4 +18,4 @@ const EditVoucher = () => {
   );
 };
 
-export default EditVoucher;
+export default VoucherEdit;

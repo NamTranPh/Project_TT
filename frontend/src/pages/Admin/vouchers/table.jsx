@@ -40,7 +40,9 @@ const Table = () => {
             name: "ID",
             selector: (row) => row.id,
             sorttable: true,
-            maxWidth: "60px",
+            style: {
+                maxWidth: "60px",
+            },
         },
         {
             name: "Mã Voucher",
@@ -70,13 +72,13 @@ const Table = () => {
                 <div className="flex gap-2 justify-center">
                     <Link
                         to={`/admin/voucher/edit?id=${row.id}`}
-                        className="px-2 py-1 text-sm bg-yellow-400 text-white rounded hover:bg-yellow-500"
+                        className="px-2 py-1 text-sm bg-yellow-400 text-white rounded hover:bg-yellow-300"
                     >
                         <FontAwesomeIcon icon={faEdit} /> Sửa
                     </Link>
                     <Link
                         to={`/admin/voucher/delete?id=${row.id}`}
-                        className="px-2 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600"
+                        className="px-2 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-400"
                     >
                         <FontAwesomeIcon icon={faTrash} /> Xóa
                     </Link>
@@ -102,14 +104,14 @@ const Table = () => {
         },
     };
 
-    return(
+    return (
         <DataTable
-          columns={columns}
-          data={data}
-          pagination
-          highlightOnHover
-          responsive
-          customStyles={customStyles}
+            columns={columns}
+            data={data}
+            pagination
+            highlightOnHover
+            responsive
+            customStyles={customStyles}
         />
     );
 
