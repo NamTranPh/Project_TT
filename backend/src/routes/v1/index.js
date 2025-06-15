@@ -1,10 +1,9 @@
 import express from 'express'
-import { StatusCodes } from 'http-status-codes'
 
 const Router = express.Router()
 
 Router.get('/', (req, res) => {
-  res.status(StatusCodes.OK).json({
+  res.status(200).json({
     message: 'APIs v1 are already to use.'
   })
 })

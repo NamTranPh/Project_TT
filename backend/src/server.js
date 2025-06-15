@@ -1,7 +1,9 @@
 import express, { json } from 'express'
-import { env } from './configs/environment'
+import config from './config/environment'
 import { APIs_v1 } from './routes/v1'
 import cors from 'cors'
+import connectDB from './config/database'
+import env from './config/environment'
 
 const app = express()
 
@@ -9,11 +11,13 @@ const app = express()
 app.use(cors())
 
 //Cho phép req.body json data
-app.use(json())
+app.use(express.json())
 
 //Sử dụng APIs_v1
 app.use('/v1', APIs_v1)
 
-app.listen(env.PORT, env.HOST, () => {
-  console.log(`I am running at ${env.HOST}:${env.PORT}/`)
+connectDB();
+
+app.listen(env.PORT, () => {
+  console.log(`I am running at ${env.PORT}`)
 })
