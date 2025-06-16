@@ -9,7 +9,7 @@ const Sidebar = ({ isOpen }) => {
     {
       id: 2, title: 'Sản phẩm', icon: faClipboard, children: [
         { title: 'Danh sách sản phẩm', link: '/admin/products/' },
-        { title: 'Thêm sản phẩm', link: '/admin/products/products/create' },
+        { title: 'Thêm sản phẩm', link: '/admin/products/create' },
         { title: 'Các sản phẩm đã xóa', link: '/admin/products/trashs' },
         { title: 'Danh mục sản phẩm', link: '/admin/categories/' },
 

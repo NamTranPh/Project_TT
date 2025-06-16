@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faGear, faRightFromBracket, faBars } from '../../../icons/icons'
+import { faUser, faBell, faGear, faRightFromBracket, faBars } from '../../../icons/icons'
+import { useNavigate } from 'react-router-dom'; //
 
 const Navbar = ({ onToggleSidebar }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -9,6 +10,16 @@ const Navbar = ({ onToggleSidebar }) => {
   const handleToggleDropdown = () => {
     setDropdownOpen(!dropdownOpen)
   }
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Xóa token / trạng thái đăng nhập nếu có
+    localStorage.removeItem('authToken'); // nếu bạn dùng token
+    // Chuyển hướng về trang đăng nhập
+    navigate('/login');
+  };
+
   return (
     <div className="flex justify-between items-center bg-white px-4 py-2 shadow-md">
       {/* Sidebar toggle */}
@@ -36,10 +47,20 @@ const Navbar = ({ onToggleSidebar }) => {
           {/* Dropdown menu */}
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300/80 rounded shadow-lg z-50 transition-all duration-150">
+              <Link to='/admin/profiles' className='flex items-center w-full px-4 py-2 hover:bg-gray-100 text-sm'>
+                <FontAwesomeIcon icon={faUser} className='mr-2' /> Profile
+              </Link>
               <Link to="/settings" className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-sm">
                 <FontAwesomeIcon icon={faGear} className="mr-2" /> Settings
               </Link>
-              <button className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-sm">
+              {/* <button className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-sm">
+                <FontAwesomeIcon icon={faRightFromBracket} className="mr-2" /> Logout
+              </button> */}
+
+              <button
+                onClick={handleLogout}
+                className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-sm"
+              >
                 <FontAwesomeIcon icon={faRightFromBracket} className="mr-2" /> Logout
               </button>
             </div>

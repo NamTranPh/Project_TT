@@ -25,6 +25,9 @@ import Categories from './pages/Admin/categories'
 import CategoriesCreate from './pages/Admin/categories/create'
 import CategoriesEdit from './pages/Admin/categories/edit'
 
+import Login from './pages/Admin/login/login'
+import Profile from './pages/Admin/profiles/'
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -32,10 +35,15 @@ function App() {
         {/* Đường dẫn cho UserLayout */}
         <Route path="/" element={<UserLayout />} />
 
+        <Route path="/login" element={<Login />} />
+
         {/* Đường dẫn cho AdminLayout */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
+
           <Route path="dashboard" element={<Dashboard />} />
+
+          <Route path="profiles" element={<Profile />} />
 
           <Route path="products">
             <Route path="" element={<Product />} />
