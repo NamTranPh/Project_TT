@@ -1,6 +1,6 @@
 // Connect to mysql here
 import { Sequelize } from 'sequelize';
-import env from './environment';
+import env from './environment.js'; // Import your environment configuration
 
 const sequelize = new Sequelize(
   env.DB_NAME,
@@ -24,4 +24,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;
+export default connectDB;

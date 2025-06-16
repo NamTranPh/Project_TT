@@ -1,12 +1,10 @@
-'use strict';
-
-import env from '../config.js'; // Import file config.js của bạn
+import env from "./environment.js"; // Import file config.js của bạn
 
 export default {
   development: {
-    username: env.DB_USER,
-    password: env.DB_PASSWORD,
-    database: env.DB_NAME,
+    username: env.DB_USER || 'root',
+    password: env.DB_PASSWORD || 'Duy27012004!',
+    database: env.DB_NAME || 'project_tt',
     host: env.DB_HOST,
     port: env.DB_PORT,
     dialect: 'mysql', // Giả sử bạn dùng MySQL, thay đổi nếu cần

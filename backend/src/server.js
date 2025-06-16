@@ -1,9 +1,8 @@
 import express, { json } from 'express'
-import config from './config/environment'
-import { APIs_v1 } from './routes/v1'
+import { APIs_v1 } from './routes/v1/index.js'
 import cors from 'cors'
-import connectDB from './config/database'
-import env from './config/environment'
+import connectDB from './config/database.js'
+import env from './config/environment.js'
 
 const app = express()
 
@@ -19,5 +18,6 @@ app.use('/v1', APIs_v1)
 connectDB();
 
 app.listen(env.PORT, () => {
-  console.log(`I am running at ${env.PORT}`)
+  console.log(`I am running at ${env.PORT}`);
+  
 })
