@@ -1,6 +1,7 @@
 'use strict';
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Banners', {
       id: {
         allowNull: false,
@@ -8,15 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      category_id: {
-        type: Sequelize.INTEGER,
+      categoryId: {
         allowNull: false,
+        type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
           key: 'id'
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       title: {
         type: Sequelize.STRING
@@ -29,27 +30,34 @@ module.exports = {
       },
       status: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: true
+        defaultValue: false
       },
       link: {
         type: Sequelize.TEXT
       },
-      started_at: {
-        type: Sequelize.DATEONLY
-      },
-      ended_at: {
-        type: Sequelize.DATEONLY
-      },
-      created_at: {
+      startedAt: {
         type: Sequelize.DATE
       },
-      updated_at: {
+      endedAt: {
         type: Sequelize.DATE
+      },
+      destroy: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Banners');
   }
 };

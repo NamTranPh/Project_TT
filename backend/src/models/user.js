@@ -10,21 +10,64 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany(models.Token, {
+        foreignKey: 'userId',
+        as: 'tokens'
+      });
+
+      this.hasMany(models.Order, {
+        foreignKey: 'userId',
+        as: 'orders'
+      });
     }
   }
   User.init({
-    id: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.TEXT,
-    address: DataTypes.STRING,
-    phone_number: DataTypes.STRING,
-    avatar: DataTypes.TEXT,
-    role: DataTypes.ENUM
+    id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
+      name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        unique: true
+      },
+      email: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        unique: true,
+        validate: {
+          isEmail: true
+        }
+      },
+      password: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+        unique: true,
+      },
+      address: {
+        allowNull: false,
+        type: DataTypes.STRING
+      },
+      phoneNumber: {
+        allowNull: false,
+        type: DataTypes.STRING
+      },
+      avatar: {
+        allowNull: true,
+        type: DataTypes.TEXT
+      },
+      role: {
+        allowNull: false,
+        type: DataTypes.ENUM('user', 'admin', 'employee'),
+        defaultValue: 'user'
+      }
   }, {
     sequelize,
     modelName: 'User',
+    tableName: 'Users',
+    timestamps: true,
   });
   return User;
 };

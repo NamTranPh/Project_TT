@@ -10,26 +10,75 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.Category, {
+        foreignKey: 'categoryId',
+        as: 'category'
+      });
+
+      this.hasMany(models.Image, {
+        foreignKey: 'productId',
+        as: 'images'
+      });
+
+      this.hasMany(models.OrderDetail, {
+        foreignKey: 'productId',
+        as: 'orderDetails'
+      });
+
+      this.hasMany(models.VoucherDetail, {
+        foreignKey: 'productId',
+        as: 'voucherDetails'
+      });
     }
   }
   Product.init({
-    id: DataTypes.INTEGER,
-    category_id: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    version: DataTypes.STRING,
-    color: DataTypes.TEXT,
-    price: DataTypes.FLOAT,
-    discout_price: DataTypes.FLOAT,
-    stock: DataTypes.INTEGER,
-    description: DataTypes.TEXT,
-    specifications: DataTypes.TEXT,
-    created_at: DataTypes.DATE,
-    updated_at: DataTypes.DATE,
-    destroy: DataTypes.BOOLEAN
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    categoryId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    name: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    version: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    color: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    price: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0.0
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    description: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    },
+    specifications: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    },
+    destroy: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
   }, {
     sequelize,
     modelName: 'Product',
+    tableName: 'Products',
+    timestamps: true
   });
   return Product;
 };

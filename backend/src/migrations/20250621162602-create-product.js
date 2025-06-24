@@ -1,6 +1,7 @@
 'use strict';
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Products', {
       id: {
         allowNull: false,
@@ -8,15 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      category_id: {
-        type: Sequelize.INTEGER,
+      categoryId: {
         allowNull: false,
+        type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
           key: 'id'
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       name: {
         type: Sequelize.STRING
@@ -25,13 +26,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       color: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.FLOAT,
-        defaultValue: 0.0
-      },
-      discout_price: {
         type: Sequelize.FLOAT,
         defaultValue: 0.0
       },
@@ -45,19 +42,23 @@ module.exports = {
       specifications: {
         type: Sequelize.TEXT
       },
-      created_at: {
-        type: Sequelize.DATE
-      },
-      updated_at: {
-        type: Sequelize.DATE
-      },
       destroy: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Products');
   }
 };

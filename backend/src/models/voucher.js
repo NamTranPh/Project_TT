@@ -10,19 +10,36 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany(models.VoucherDetail, {
+        foreignKey: 'voucherId',
+        as: 'voucherDetails'
+      });
     }
   }
   Voucher.init({
-    id: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    discount: DataTypes.FLOAT,
-    created_at: DataTypes.DATE,
-    updated_at: DataTypes.DATE,
-    destroy: DataTypes.BOOLEAN
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    title: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    discount: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0.0
+    },
+    destroy: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   }, {
     sequelize,
     modelName: 'Voucher',
+    tableName: 'Vouchers',
+    timestamps: true
   });
   return Voucher;
 };

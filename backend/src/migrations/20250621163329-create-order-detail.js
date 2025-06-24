@@ -1,6 +1,7 @@
 'use strict';
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('OrderDetails', {
       id: {
         allowNull: false,
@@ -8,45 +9,45 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      order_id: {
-        type: Sequelize.INTEGER,
+      orderId: {
         allowNull: false,
+        type: Sequelize.INTEGER,
         references: {
           model: 'Orders',
           key: 'id'
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
-      product_id: {
-        type: Sequelize.INTEGER,
+      productId: {
         allowNull: false,
+        type: Sequelize.INTEGER,
         references: {
           model: 'Products',
           key: 'id'
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       price: {
-        type: Sequelize.FLOAT,
-        defaultValue: 0.0
+        type: Sequelize.FLOAT
       },
       quantity: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+         allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('OrderDetails');
   }
 };

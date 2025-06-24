@@ -1,23 +1,27 @@
-import express, { json } from 'express'
-import config from './config/environment'
-import { APIs_v1 } from './routes/v1'
-import cors from 'cors'
-import connectDB from './config/database'
-import env from './config/environment'
+const express =  require('express');
+const environment = require('./config/environment');
+const logger = require('./utils/logger');
+const { connectDB } = require('./config/db.js');
+const cors = require('cors');
+const errorHandling = require('./middlewares/errorHandling.middleware');
 
-const app = express()
+const API_v1s = require('./routes/v1/index');
 
-//Xử lý cors
-app.use(cors())
+const app = express();
 
-//Cho phép req.body json data
-app.use(express.json())
+//Handling middlewares
+app.use(cors());
 
-//Sử dụng APIs_v1
-app.use('/v1', APIs_v1)
+app.use(express.json());
+app.use(errorHandling);
 
+//Routes
+app.use('/api/v1', API_v1s);
+
+//Connect database
 connectDB();
 
-app.listen(env.PORT, () => {
-  console.log(`I am running at ${env.PORT}`)
-})
+app.listen(environment.PORT, () => {
+  logger.info(`Server is running on port: ${environment.PORT}`)
+});
+

@@ -1,6 +1,8 @@
 'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Orders', {
       id: {
         allowNull: false,
@@ -8,37 +10,39 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
-        type: Sequelize.INTEGER,
+      userId: {
         allowNull: false,
+        type: Sequelize.INTEGER,
         references: {
           model: 'Users',
           key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        }, 
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       note: {
-        type: Sequelize.TEXT,
-        allowNull: true
+        type: Sequelize.TEXT
       },
-      ship_address: {
+      shipAddress: {
         type: Sequelize.TEXT
       },
       status: {
         type: Sequelize.ENUM('Đang xử lý', 'Đang giao hàng', 'Giao hàng thành công', 'Giao hàng thất bại'),
+      defaultValue: 'Đang xử lý'
+      },
+      createdAt: {
         allowNull: false,
-        defaultValue: 'Đang xử lý'
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
-      created_at: {
-        type: Sequelize.DATE
-      },
-      updated_at: {
-        type: Sequelize.DATE
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Orders');
   }
 };

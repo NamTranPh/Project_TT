@@ -10,18 +10,43 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.Product, {
+        foreignKey: 'productId',
+        as: 'product'
+      });
+
+      this.belongsTo(models.Voucher, {
+        foreignKey: 'voucherId',
+        as: 'voucher'
+      });
     }
   }
   VoucherDetail.init({
-    id: DataTypes.INTEGER,
-    product_id: DataTypes.INTEGER,
-    voucher_id: DataTypes.INTEGER,
-    started_date: DataTypes.DATE,
-    ended_date: DataTypes.DATE
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    productId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    voucherId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    startedAt: {
+      type: DataTypes.DATE
+    },
+    endedAt: {
+      type: DataTypes.DATE
+    },
   }, {
     sequelize,
     modelName: 'VoucherDetail',
+    tableName: 'VoucherDetails',
+    timestamps: true
   });
   return VoucherDetail;
 };

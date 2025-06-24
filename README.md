@@ -1,58 +1,121 @@
-# ProjectTT
-ProjectTT
+# Project_TT
 
-# Cài đặt
-# NPM
-npm install
+## Mô tả
+Project_TT là một hệ thống web fullstack gồm backend (Node.js/Express/Sequelize/MySQL) và frontend (bạn cần bổ sung framework nếu có, ví dụ React/Vue/Angular).
 
-# Lệnnh tải biểu đồ
-npm install recharts
+---
 
-# Tải fontawesome
-npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
+## 1. Yêu cầu hệ thống
 
-# Tai Datatable
-npm install react-data-table-component
+- Node.js >= 16.x
+- MySQL >= 5.7
+- (Frontend) npm/yarn
 
+---
 
-# Hướng dẫn cài đặt Database cho Backend
-
-## 1. Cài đặt các package cần thiết
+## 2. Cài đặt Backend
 
 ```bash
 cd backend
 npm install
 ```
 
-## 2. Cấu hình biến môi trường
+### Cấu hình môi trường
 
-```bash
-cp .env.example .env
-```
-
-## 3.Edit .env with your database credentials:
-
+- Tạo file `.env` trong thư mục `backend`
 ```bash
 PORT=3000
+NODE_ENV=development
+# Database configuration
 DB_NAME=ecommerce_db
-DB_USER=your_username
-DB_PASSWORD=your_password
+DB_USER=
+DB_PASSWORD=
 DB_HOST=localhost
 DB_PORT=3306
+
+# JWT secret key
+JWT_ACCESS_TOKEN_SECURE=
+JWT_ACCESS_TOKEN_EXPIRATION=
+JWT_REFRESH_TOKEN_SECURE=
+JWT_REFRESH_TOKEN_EXPIRATION=
+
+#CLOUDINARY key
+CLOUDINARY_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_SECRET=
 ```
 
-## 4. Run migrations:
+### Cấu hình cơ sở dữ liệu
 
+- tạo file config.json trong thư mục backend/src/config
+
+```bash
+{
+  "development": {
+    "username": "your_username",
+    "password": "your_pashword",
+    "database": "your_databasename",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "your_username",
+    "password": "your_pashword",
+    "database": "your_databasename",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "your_username",
+    "password": "your_pashword",
+    "database": "your_databasename",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
+  }
+}
+
+```
+
+### Khởi tạo database
+
+- Tạo cơ sở dữ liệu 
+```bash
+CREATE DATABASE ecommerce_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+- Di chuyển vào thư mục backend/src
+- Chạy migrate để thêm các bảng vào cơ sở dữ liệu và seed để thêm dữ liệu
 ```bash
 npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
 ```
 
-## 5. Verify tables in the database:
+### Chạy backend
 
 ```bash
-SHOW TABLES;
+npm run dev
+```
+
+## 3. Cài đặt Frontend
+
+```bash
+cd frontend
+npm install
+```
+
+### Chạy frontend
+
+```bash
+npm start
 ```
 
 ---
 
-**Chúc bạn thành công!**
+
+## 5. Liên hệ
+
+- Tác giả: 
+- Email:

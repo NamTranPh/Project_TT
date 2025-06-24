@@ -10,16 +10,36 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany(models.Banner, {
+        foreignKey: 'categoryId',
+        as: 'banners'
+      });
+
+      this.hasMany(models.Product, {
+        foreignKey: 'categoryId',
+        as: 'products'
+      });
     }
   }
   Category.init({
-    id: DataTypes.INTEGER,
-    name: DataTypes.TEXT,
-    destroy: DataTypes.BOOLEAN
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    name: {
+      type: DataTypes.STRING,
+    },
+    destroy: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   }, {
     sequelize,
     modelName: 'Category',
+    tableName: 'Categories',
+    timestamps: true
   });
   return Category;
 };

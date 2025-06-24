@@ -3,52 +3,41 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Order extends Model {
+  class Token extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      // define association here
       this.belongsTo(models.User, {
         foreignKey: 'userId',
         as: 'user'
-      });
-
-      this.hasMany(models.OrderDetail, {
-        foreignKey: 'orderId',
-        as: 'orderDetails'
-      });
+      })
     }
   }
-  Order.init({
+  Token.init({
     id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
+      allowNull:false,
+      autoIncrement:true,
+      primaryKey:true,
+      type:DataTypes.INTEGER
     },
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    note: {
+    refreshToken: {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    shipAddress: {
-      allowNull: false,
-      type: DataTypes.TEXT
-    },
-    status: {
-      type: DataTypes.ENUM('Đang xử lý', 'Đang giao hàng', 'Giao hàng thành công', 'Giao hàng thất bại'),
-      defaultValue: 'Đang xử lý'
-    }
+    expireAt: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'Order',
-    tableName: 'Orders',
+    modelName: 'Token',
+    tableName: 'Tokens',
     timestamps: true
   });
-  return Order;
+  return Token;
 };
