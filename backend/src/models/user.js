@@ -44,7 +44,6 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         allowNull: false,
         type: DataTypes.TEXT,
-        unique: true,
       },
       address: {
         allowNull: false,
